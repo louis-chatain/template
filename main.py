@@ -1,0 +1,7 @@
+from fastapi import FastAPI
+
+from router import abc
+
+app = FastAPI()
+
+app.include_router(abc.router)
