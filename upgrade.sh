@@ -1,5 +1,5 @@
-echo \n"------going to upgrade --------"\n
+echo \n"going to upgrade."\n
 
 alembic upgrade head
 
-echo \n"Database migration complete."\n
+echo \n"Database upgrade complete."\n
