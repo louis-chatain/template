@@ -4,13 +4,14 @@ from sqlalchemy.ext.asyncio.session import AsyncSession
 from db.database import get_async_db
 from schemas.schemas_abc import AbcModel, AbcDisplay
 
-router = APIRouter(prefix="/user", tags=["user"])
+router = APIRouter(prefix="/abc", tags=["abc"])
 
 
 @router.post(
     "/create",
+    include_in_schema=True,
     deprecated=False,
-    name='Abc_Creation',
+    name="Abc_Creation",
     summary="une phrase qui resume la fonction.",
     description="une decription longue et precise",
     response_model=AbcDisplay,
@@ -18,24 +19,20 @@ router = APIRouter(prefix="/user", tags=["user"])
     response_description="Succes de la reponse",
     responses={
         201: {
-            "description": "SUCCESS - User has been created",
+            "description": "SUCCESS - abc has been created",
             "content": {
-                "application/json": {
-                    "example": {
-                        "id": 1,
-                        "username": "janedoe",
-                        "email": "janedoe@example.com"
-                    }
-                }
-            }
+                "application/json": {"example": {"id": 1, "abc": "abc"}},
+            },
         },
-        409: {
-            "description": "CONFLICT - Email or Username already exists"
-        }
-    }
+        409: {"description": "CONFLICT"},
+    },
 )
-async def create(request: AbcModel, db: AsyncSession = Depends(get_async_db)):
-    abc = await db_abc.create(request, db)
+async def create(
+    request: AbcModel,
+    db: AsyncSession = Depends(get_async_db),
+) -> AbcDisplay:
+    abc: AbcDisplay = await db_abc.create(request, db)
     return abc
 
-#--------------------------------------------------------------------------
+
+# --------------------------------------------------------------------------
