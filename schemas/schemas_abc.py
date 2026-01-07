@@ -1,5 +1,5 @@
+from pydantic import BaseModel, ConfigDict, Field
 from typing import Optional
-from pydantic import BaseModel, Field
 
 
 class AbcModel(BaseModel):
@@ -27,5 +27,5 @@ class AbcDisplay(BaseModel):
     id: int
     abc: str
     
-    class ConfigDict:
-        from_attributes = True
+    model_config = ConfigDict(from_attributes=True)
+

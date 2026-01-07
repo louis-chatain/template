@@ -1,11 +1,11 @@
-import os
-import logging
-from dotenv import load_dotenv
 from sqlalchemy.ext.asyncio import create_async_engine, async_sessionmaker
-from sqlalchemy.ext.asyncio.engine import AsyncEngine
 from sqlalchemy.ext.asyncio.session import AsyncSession
+from sqlalchemy.ext.asyncio.engine import AsyncEngine
 from sqlalchemy.orm import DeclarativeBase
 from sqlalchemy import MetaData
+from dotenv import load_dotenv
+import logging
+import os
 
 # ------------------------------------------------------------------------------------
 
